@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html ng-app="myModule">
+    <head>
+        <script src="../Clickevent/scripts/angular.js"></script>
+        <script src="./script/filterscript.js"></script>
+
+    </head>
+    <body>
+        <div ng-controller="myController">
+            Number of Rows: <input type="number" step="1" min="0" max="5" ng-model="rowLimit"/>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>salary(amount)</th>
+                    <th>salary(currency)</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="employee in employees | limitTo:rowLimit">
+                        <td>{{employee.name | uppercase}}</td>
+                        <td>{{employee.dateOfBirth | date:"MM/dd/yyyy"}}</td>
+                        <td>{{employee.gender | lowercase}}</td>
+                        <td>{{employee.salary | number:2}}</td>
+                        <td>{{employee.salary | currency }}</td>
+                   </tr>
+                </tbody>
+            </table>        
+        </div>
+
+    </body>
+</html>
